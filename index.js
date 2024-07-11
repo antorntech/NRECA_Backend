@@ -66,6 +66,7 @@ app.use(
 
 const adminRoutes = require("./routes/v1/admin.route");
 const employeeRoutes = require("./routes/v1/employee.route");
+const leaveRoutes = require("./routes/v1/leave.route");
 
 const port = 5000;
 
@@ -76,6 +77,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/employee", employeeRoutes);
+app.use("/api/v1/leave", leaveRoutes);
 
 app.listen(port, () => {
   console.log("listening on port " + port);
