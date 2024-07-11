@@ -1,6 +1,8 @@
+// Import Mongoose
 const mongoose = require("mongoose");
 
-const employeeSchema = new mongoose.Schema({
+// Define the Accounts schema
+const accountsSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -19,8 +21,12 @@ const employeeSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "employee", // You can modify this for different roles if needed
+    default: "superadmin", // You can modify this for different roles if needed
   },
 });
 
-module.exports = mongoose.model("Employee", employeeSchema, "Employee");
+// Create the Accounts model
+const Accounts = mongoose.model("Accounts", accountsSchema, "Accounts");
+
+// Export the model
+module.exports = Accounts;

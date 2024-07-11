@@ -64,7 +64,7 @@ app.use(
   })
 );
 
-const adminRoutes = require("./routes/v1/admin.route");
+const accountsRoutes = require("./routes/v1/accounts.route");
 const employeeRoutes = require("./routes/v1/employee.route");
 const leaveRoutes = require("./routes/v1/leave.route");
 
@@ -75,7 +75,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to NRECA");
 });
 
-app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/accounts", accountsRoutes);
 app.use("/api/v1/employee", employeeRoutes);
 app.use("/api/v1/leave", leaveRoutes);
 
