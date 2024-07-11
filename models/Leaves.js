@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const leavesSchema = new mongoose.Schema(
   {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
+    email: {
+      type: String,
     },
     leaveCategory: {
       type: String,
@@ -12,6 +12,9 @@ const leavesSchema = new mongoose.Schema(
       type: String,
     },
     date: {
+      type: String,
+    },
+    days: {
       type: String,
     },
     reason: {
