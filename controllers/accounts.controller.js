@@ -8,7 +8,8 @@ module.exports.createAccounts = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
 
-    console.log(req.body);
+    console.log(email);
+
     const emailPattern = /^[\w-]+(\.[\w-]+)*@nreca-intl\.org$/;
     if (!emailPattern.test(email)) {
       return res.status(400).json({
