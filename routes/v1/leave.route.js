@@ -5,8 +5,9 @@ const leaveControllers = require("../../controllers/leave.controller");
 
 app.get("/", leaveControllers.allLeaves);
 app.get("/:id", leaveControllers.singleLeaves);
-app.post("/addLeaves", upload.single("avatar"), leaveControllers.addLeaves);
-app.put("/:id", upload.single("avatar"), leaveControllers.updateLeaves);
+app.get("/myLeaves", leaveControllers.myLeaves);
+app.post("/addLeaves", leaveControllers.addLeaves);
+app.put("/update/:id", leaveControllers.updateLeaves);
 app.delete("/delete/:id", leaveControllers.deleteLeaves);
 
 module.exports = app;
