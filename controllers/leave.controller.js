@@ -32,24 +32,30 @@ module.exports.singleLeaves = async (req, res) => {
 
 module.exports.myLeaves = async (req, res) => {
   try {
-    const leaves = await Leaves.find({ email: req.body.email });
-    res.status(200).json(leaves);
+    const { myemail } = req.params;
+
+    // Query Leaves collection by email field
+    const result = await Leaves.find({ email: myemail });
+
+    if (!result || result.length === 0) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Data not found",
+      });
+    }
+
+    res.status(200).json(result);
   } catch (error) {
-    console.log(error, "Error");
-    res.send("Inter Server Error");
+    console.error("Error:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
 module.exports.addLeaves = async (req, res, next) => {
   try {
     const dateFromFront = req.body.date;
-
-    // Split the dates from the string
-    const dates = dateFromFront.split(",");
-
-    // Parse the dates into Date objects
-    const date1 = new Date(dates[0]);
-    const date2 = new Date(dates[1]);
+    const date1 = new Date(dateFromFront[0]);
+    const date2 = new Date(dateFromFront[1]);
 
     // Calculate the difference in milliseconds
     const differenceMs = Math.abs(date2 - date1);
@@ -60,10 +66,11 @@ module.exports.addLeaves = async (req, res, next) => {
     // Uncomment the line below when you're ready to create the leave record
     const result = await Leaves.create({
       email: req.body.email,
+      role: req.body.role,
       leaveCategory: req.body.leaveCategory,
       leaveType: req.body.leaveType,
       date: req.body.date,
-      days: days,
+      days: days + 1,
       reason: req.body.reason,
       remark: req.body.remark,
       status: req.body.status,
@@ -88,11 +95,9 @@ module.exports.updateLeaves = async (req, res, next) => {
     const { id } = req.params;
 
     const dateFromFront = req.body.date;
-
     // Split the dates from the string
     const dates = dateFromFront.split(",");
 
-    // Parse the dates into Date objects
     const date1 = new Date(dates[0]);
     const date2 = new Date(dates[1]);
 
@@ -108,7 +113,7 @@ module.exports.updateLeaves = async (req, res, next) => {
       leaveCategory: req.body.leaveCategory,
       leaveType: req.body.leaveType,
       date: req.body.date,
-      days: days,
+      days: days + 1,
       reason: req.body.reason,
       remark: req.body.remark,
       status: req.body.status,

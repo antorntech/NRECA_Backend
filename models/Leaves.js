@@ -4,6 +4,11 @@ const leavesSchema = new mongoose.Schema(
   {
     email: {
       type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      required: true,
     },
     leaveCategory: {
       type: String,
@@ -12,7 +17,7 @@ const leavesSchema = new mongoose.Schema(
       type: String,
     },
     date: {
-      type: String,
+      type: Array,
     },
     days: {
       type: String,
@@ -26,10 +31,6 @@ const leavesSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "pending",
-    },
-    approvedBy: {
-      type: String,
-      default: "N/A",
     },
     approvedDate: {
       type: String,
