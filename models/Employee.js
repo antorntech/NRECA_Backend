@@ -5,13 +5,34 @@ const employeeSchema = new mongoose.Schema(
     officeId: {
       type: Number,
     },
-    firstName: {
+    name: {
       type: String,
       required: true,
     },
-    lastName: {
+    gender: {
       type: String,
-      required: true,
+    },
+    nationality: {
+      type: String,
+    },
+    dob: {
+      type: String,
+    },
+    employeeType: {
+      type: String,
+    },
+    joiningDate: {
+      type: String,
+    },
+    endDate: {
+      type: String,
+      default: "Running",
+    },
+    projectName: {
+      type: String,
+    },
+    department: {
+      type: String,
     },
     designation: {
       type: String,
@@ -20,10 +41,7 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    primaryMobNumber: {
-      type: String,
-    },
-    secondaryMobNumber: {
+    phoneNumber: {
       type: String,
     },
     avatar: {
@@ -37,6 +55,14 @@ const employeeSchema = new mongoose.Schema(
     sickLeave: {
       type: Number,
       default: 10,
+    },
+    employeeType: {
+      type: String,
+      default: "Full Time",
+    },
+    employeeStatus: {
+      type: String,
+      default: "Active",
     },
   },
   {
