@@ -97,7 +97,6 @@ module.exports.updateLeaves = async (req, res, next) => {
   try {
     const { id } = req.params;
     const dateFromFront = req.body.date;
-    console.log(typeof dateFromFront);
     if (typeof dateFromFront === "string") {
       const newDate = [dateFromFront];
       const dates = newDate[0].split(",");
