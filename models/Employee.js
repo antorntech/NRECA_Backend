@@ -113,7 +113,7 @@ const employeeSchema = new mongoose.Schema({
   tinDoc: {
     type: String,
   },
-  singnatureDoc: {
+  signatureDoc: {
     type: String,
   },
   emergencyNumber: {

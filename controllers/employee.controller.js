@@ -61,12 +61,19 @@ module.exports.addEmployee = async (req, res, next) => {
           message: "Email already exists",
         });
       } else {
-        // Check if files were uploaded
-        if (req.file) {
-          Object.assign(req.body, {
-            avatar: "/uploads/images/" + req.file.filename,
-          });
-        }
+        // Get the filenames of the uploaded files
+        const avatar = req.files["avatar"][0].filename;
+        const nidDoc = req.files["nidDoc"][0].filename;
+        const passportDoc = req.files["passportDoc"][0].filename;
+        const tinDoc = req.files["tinDoc"][0].filename;
+        const signatureDoc = req.files["signatureDoc"][0].filename;
+
+        // Assign the filenames to the user object
+        req.body.avatar = `/uploads/images/${avatar}`;
+        req.body.nidDoc = `/uploads/documents/${nidDoc}`;
+        req.body.passportDoc = `/uploads/documents/${passportDoc}`;
+        req.body.tinDoc = `/uploads/documents/${tinDoc}`;
+        req.body.signatureDoc = `/uploads/images/${signatureDoc}`;
 
         const result = await Employee.create(req.body);
 
