@@ -32,7 +32,7 @@ const employeeSchema = new mongoose.Schema({
   },
   endDate: {
     type: String,
-    default: "Running",
+    default: "N/A",
   },
   projectName: {
     type: String,
