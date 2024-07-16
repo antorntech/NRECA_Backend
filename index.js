@@ -23,8 +23,8 @@ global.upload = multer({
       ) {
         uploadPath += "documents/";
       } else {
-        // Default to a general "uploads" folder for other file types
-        uploadPath += "uploads/";
+        // Default to a general "others" folder for other file types
+        uploadPath += "others/";
       }
 
       // Ensure the folder exists
