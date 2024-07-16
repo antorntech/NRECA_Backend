@@ -68,6 +68,7 @@ const accountsRoutes = require("./routes/v1/accounts.route");
 const employeeRoutes = require("./routes/v1/employee.route");
 const leaveRoutes = require("./routes/v1/leave.route");
 const documentCVRoutes = require("./routes/v1/documentscv.route");
+const formTemplateRoutes = require("./routes/v1/formtemplate.route");
 
 const port = 5000;
 
@@ -80,6 +81,7 @@ app.use("/api/v1/accounts", accountsRoutes);
 app.use("/api/v1/employee", employeeRoutes);
 app.use("/api/v1/leave", leaveRoutes);
 app.use("/api/v1/documentscv", documentCVRoutes);
+app.use("/api/v1/formtemplate", formTemplateRoutes);
 
 app.listen(port, () => {
   console.log("listening on port " + port);
