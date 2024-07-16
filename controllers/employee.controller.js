@@ -61,19 +61,35 @@ module.exports.addEmployee = async (req, res, next) => {
           message: "Email already exists",
         });
       } else {
-        // Get the filenames of the uploaded files
-        const avatar = req.files["avatar"][0].filename;
-        const nidDoc = req.files["nidDoc"][0].filename;
-        const passportDoc = req.files["passportDoc"][0].filename;
-        const tinDoc = req.files["tinDoc"][0].filename;
-        const signatureDoc = req.files["signatureDoc"][0].filename;
+        if (req.files["avatar"]) {
+          Object.assign(req.body, {
+            avatar: `/uploads/images/${req.files["avatar"][0].filename}`,
+          });
+        }
 
-        // Assign the filenames to the user object
-        req.body.avatar = `/uploads/images/${avatar}`;
-        req.body.nidDoc = `/uploads/documents/${nidDoc}`;
-        req.body.passportDoc = `/uploads/documents/${passportDoc}`;
-        req.body.tinDoc = `/uploads/documents/${tinDoc}`;
-        req.body.signatureDoc = `/uploads/images/${signatureDoc}`;
+        if (req.files["nidDoc"]) {
+          Object.assign(req.body, {
+            nidDoc: `/uploads/documents/${req.files["nidDoc"][0].filename}`,
+          });
+        }
+
+        if (req.files["passportDoc"]) {
+          Object.assign(req.body, {
+            passportDoc: `/uploads/documents/${req.files["passportDoc"][0].filename}`,
+          });
+        }
+
+        if (req.files["tinDoc"]) {
+          Object.assign(req.body, {
+            tinDoc: `/uploads/documents/${req.files["tinDoc"][0].filename}`,
+          });
+        }
+
+        if (req.files["signatureDoc"]) {
+          Object.assign(req.body, {
+            signatureDoc: `/uploads/images/${req.files["signatureDoc"][0].filename}`,
+          });
+        }
 
         const result = await Employee.create(req.body);
 
@@ -95,9 +111,33 @@ module.exports.updateEmployee = async (req, res, next) => {
     const { id } = req.params;
 
     // Check if files were uploaded
-    if (req.file) {
+    if (req.files["avatar"]) {
       Object.assign(req.body, {
-        avatar: "/uploads/images/" + req.file.filename,
+        avatar: `/uploads/images/${req.files["avatar"][0].filename}`,
+      });
+    }
+
+    if (req.files["nidDoc"]) {
+      Object.assign(req.body, {
+        nidDoc: `/uploads/documents/${req.files["nidDoc"][0].filename}`,
+      });
+    }
+
+    if (req.files["passportDoc"]) {
+      Object.assign(req.body, {
+        passportDoc: `/uploads/documents/${req.files["passportDoc"][0].filename}`,
+      });
+    }
+
+    if (req.files["tinDoc"]) {
+      Object.assign(req.body, {
+        tinDoc: `/uploads/documents/${req.files["tinDoc"][0].filename}`,
+      });
+    }
+
+    if (req.files["signatureDoc"]) {
+      Object.assign(req.body, {
+        signatureDoc: `/uploads/images/${req.files["signatureDoc"][0].filename}`,
       });
     }
 

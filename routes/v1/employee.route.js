@@ -17,7 +17,17 @@ app.post(
   ]),
   employeeControllers.addEmployee
 );
-app.put("/:id", upload.single("avatar"), employeeControllers.updateEmployee);
+app.put(
+  "/:id",
+  upload.fields([
+    { name: "avatar", maxCount: 1 },
+    { name: "nidDoc", maxCount: 1 },
+    { name: "passportDoc", maxCount: 1 },
+    { name: "tinDoc", maxCount: 1 },
+    { name: "signatureDoc", maxCount: 1 },
+  ]),
+  employeeControllers.updateEmployee
+);
 app.delete("/delete/:id", employeeControllers.deleteEmployee);
 
 module.exports = app;
