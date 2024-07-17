@@ -6,6 +6,7 @@ const { auth } = require("../../middleware/auth");
 
 app.get("/", employeeControllers.allEmployee);
 app.get("/:id", employeeControllers.singleEmployee);
+app.get("/profile/:email", employeeControllers.employeeProfile);
 app.post(
   "/addEmployee",
   upload.fields([

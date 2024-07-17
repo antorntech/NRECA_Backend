@@ -30,6 +30,27 @@ module.exports.singleEmployee = async (req, res) => {
   }
 };
 
+module.exports.employeeProfile = async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    const result = await Employee.findOne({ officeEmail: email });
+
+    res.status(200).json({
+      status: "success",
+      message: "Data find successfully!",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      status: "fail",
+      message: "Data not find",
+      error: error,
+    });
+  }
+};
+
 module.exports.addEmployee = async (req, res, next) => {
   try {
     const getEmail = req.body.officeEmail;
