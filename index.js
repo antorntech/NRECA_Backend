@@ -68,6 +68,8 @@ const accountsRoutes = require("./routes/v1/accounts.route");
 const employeeRoutes = require("./routes/v1/employee.route");
 const leaveRoutes = require("./routes/v1/leave.route");
 const documentCVRoutes = require("./routes/v1/documentscv.route");
+const companyPolicyRoutes = require("./routes/v1/companypolicy.route");
+const trainingMaterialsRoutes = require("./routes/v1/trainingmaterials.route");
 const formTemplateRoutes = require("./routes/v1/formtemplate.route");
 const formCategoryRoutes = require("./routes/v1/formcategory.route");
 
@@ -82,6 +84,8 @@ app.use("/api/v1/accounts", accountsRoutes);
 app.use("/api/v1/employee", employeeRoutes);
 app.use("/api/v1/leave", leaveRoutes);
 app.use("/api/v1/documentscv", documentCVRoutes);
+app.use("/api/v1/companypolicy", companyPolicyRoutes);
+app.use("/api/v1/trainingmaterials", trainingMaterialsRoutes);
 app.use("/api/v1/formtemplate", formTemplateRoutes);
 app.use("/api/v1/formcategory", formCategoryRoutes);
 
