@@ -15,7 +15,7 @@ module.exports.createTrainingMaterials = async (req, res) => {
 
     res.status(201).json({
       status: "success",
-      message: "Training Materials created successfully!",
+      message: "Training Material created successfully!",
       data: result,
     });
   } catch (error) {
@@ -64,7 +64,7 @@ module.exports.updateTrainingMaterialsById = async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      message: "Training Materials updated successfully!",
+      message: "Training Material updated successfully!",
       data: result,
     });
   } catch (error) {
